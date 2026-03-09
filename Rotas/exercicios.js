@@ -2,16 +2,56 @@ const express = require('express')
 const router = express.Router()
 
 const ex = [
-    { exercicio: "3^4", resolucao: "3 × 3 × 3 × 3 = 81", resposta: 81 },
-    { exercicio: "2^6", resolucao: "2 × 2 × 2 × 2 × 2 × 2 = 64", resposta: 64 },
-    { exercicio: "5^3", resolucao: "5 × 5 × 5 = 125", resposta: 125 },
-    { exercicio: "4^3", resolucao: "4 × 4 × 4 = 64", resposta: 64 },
-    { exercicio: "6^2", resolucao: "6 × 6 = 36", resposta: 36 },
-    { exercicio: "7^2", resolucao: "7 × 7 = 49", resposta: 49 },
-    { exercicio: "8^2", resolucao: "8 × 8 = 64", resposta: 64 },
-    { exercicio: "9^2", resolucao: "9 × 9 = 81", resposta: 81 },
-    { exercicio: "10^3", resolucao: "10 × 10 × 10 = 1000", resposta: 1000 },
-    { exercicio: "2^8", resolucao: "2 × 2 × 2 × 2 × 2 × 2 × 2 × 2 = 256", resposta: 256 }
+  {
+    exercicio: "5^2 × 5^3",
+    resolucao: "Mesma base → somamos os expoentes: 5^(2+3) = 5^5 = 3125",
+    resposta: 3125
+  },
+  {
+    exercicio: "7^5 ÷ 7^2",
+    resolucao: "Mesma base → subtraímos os expoentes: 7^(5-2) = 7^3 = 343",
+    resposta: 343
+  },
+  {
+    exercicio: "(4^2)^3",
+    resolucao: "Potência de potência → multiplicamos os expoentes: 4^(2×3) = 4^6 = 4096",
+    resposta: 4096
+  },
+  {
+    exercicio: "(3 × 5)^2",
+    resolucao: "Potência de produto → distribuímos o expoente: 3^2 × 5^2 = 9 × 25 = 225",
+    resposta: 225
+  },
+  {
+    exercicio: "3^-3",
+    resolucao: "Expoente negativo → inverso da potência: 1 / 3^3 = 1/27",
+    resposta: "1/27"
+  },
+  {
+    exercicio: "2^4 × 2^3",
+    resolucao: "Mesma base → somamos os expoentes: 2^(4+3) = 2^7 = 128",
+    resposta: 128
+  },
+  {
+    exercicio: "10^6 ÷ 10^2",
+    resolucao: "Mesma base → subtraímos os expoentes: 10^(6-2) = 10^4 = 10000",
+    resposta: 10000
+  },
+  {
+    exercicio: "(5^2)^2",
+    resolucao: "Potência de potência → multiplicamos os expoentes: 5^(2×2) = 5^4 = 625",
+    resposta: 625
+  },
+  {
+    exercicio: "(2 × 4)^3",
+    resolucao: "Potência de produto → 2^3 × 4^3 = 8 × 64 = 512",
+    resposta: 512
+  },
+  {
+    exercicio: "6^-2",
+    resolucao: "Expoente negativo → 1 / 6^2 = 1/36",
+    resposta: "1/36"
+  }
 ]
 
 router.get('/ex1', (req,res)=> res.json(ex[0]))
