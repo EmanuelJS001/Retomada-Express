@@ -54,15 +54,10 @@ const ex = [
   }
 ]
 
-router.get('/ex1', (req,res)=> res.json(ex[0]))
-router.get('/ex2', (req,res)=> res.json(ex[1]))
-router.get('/ex3', (req,res)=> res.json(ex[2]))
-router.get('/ex4', (req,res)=> res.json(ex[3]))
-router.get('/ex5', (req,res)=> res.json(ex[4]))
-router.get('/ex6', (req,res)=> res.json(ex[5]))
-router.get('/ex7', (req,res)=> res.json(ex[6]))
-router.get('/ex8', (req,res)=> res.json(ex[7]))
-router.get('/ex9', (req,res)=> res.json(ex[8]))
-router.get('/ex10', (req,res)=> res.json(ex[9]))
+router.get('/exercicio/:id', (req,res)=> {
+  let id =req.params.id
+  id = id - 1
+  res.json(ex[id])
+})
 
 module.exports = router
