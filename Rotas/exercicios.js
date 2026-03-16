@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const ex = [
+const normal = [
   {
     exercicio: "5^2 × 5^3",
     resolucao: "Mesma base → somamos os expoentes: 5^(2+3) = 5^5 = 3125",
@@ -54,10 +54,48 @@ const ex = [
   }
 ]
 
-router.get('/exercicio/:id', (req,res)=> {
-  let id =req.params.id
-  id = id - 1
-  res.json(ex[id])
-})
+const vestibular = [
+  {
+    exercicio: "(FUVEST) Qual a metade de 2^22?",
+    resolucao: "Metade de 2^22 = 2^22 ÷ 2 = 2^21",
+    resposta: 2^21
+  },
+  {
+    exercicio: "(FUVEST) Calcule 8^(2/3) + 9^(0,5).",
+    resolucao: "8^(2/3) = (∛8)^2 = 2^2 = 4; 9^(0,5) = √9 = 3 → 4 + 3",
+    resposta: 7
+  },
+  {
+    exercicio: "(VUNESP) Qual o valor da expressão 5^(-1) − 1/2?",
+    resolucao: "5^(-1) = 1/5 → 1/5 − 1/2 = (2/10 − 5/10) = -3/10",
+    resposta: -0.3
+  },
+  {
+    exercicio: "(UFPB) Sendo x^3 = 25 e y^2 = 27, calcular |x^(3/2) · y^(4/3)|.",
+    resolucao: "x^(3/2) = (x^3)^(1/2) = √25 = 5; y^(4/3) = (y^2)^(2/3) = 27^(2/3) = 9 → |5 × 9|",
+    resposta: 45
+  },
+  {
+    exercicio: "(FUVEST) Se 4^16 · 5^25 = α · 10^n, com 1 ≤ α < 10, determine n.",
+    resolucao: "4^16 = (2^2)^16 = 2^32. Então: 2^32 · 5^25 = (2^25 · 5^25) · 2^7 = 10^25 · 128 = 1,28 × 10^27",
+    resposta: 27
+  }
+]
+
+router.get("/exercicio/:id", (req, res) => {
+  let id = (req.params.id) - 1;
+  const tipo = req.query.tipo; 
+
+  let lista;
+
+  if (tipo === "vestibular") {
+    lista = (vestibular);
+  } else if (tipo === "normal") {
+    lista = (normal);
+  }
+  const exercicio = lista[id];
+
+  res.json(exercicio);
+});
 
 module.exports = router
